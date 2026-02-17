@@ -35,7 +35,7 @@ export default function SideNav() {
       >
         <User />
         <Navigation />
-        <VisActor />
+        {/* <VisActor /> */}
       </aside>
     </>
   );

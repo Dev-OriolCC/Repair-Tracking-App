@@ -15,7 +15,7 @@ export default function User() {
           />
           <div className="flex flex-col">
             <span className="text-sm font-medium">Name</span>
-            <span className="text-xs text-muted-foreground">Agent Admin</span>
+            <span className="text-xs text-muted-foreground">Admin</span>
           </div>
         </div>
         <ChevronDown size={16} />
