@@ -5,15 +5,16 @@ change.
 
 ## Current Phase
 
-- [e.g. Not started / In progress / Complete]
+- Complete
 
 ## Current Goal
 
-- [What you are building right now]
+- RepairOrderPayment service layer implemented.
 
 ## Completed
 
-- Completed Data/Service layer for Client, RepairOrderItem, RepairOrder, Role, Service, User
+- Completed Data/Service layer for Client, RepairOrderItem, RepairOrder,
+  RepairOrderPayment, Role, Service, User
 
 ## In Progress
 
@@ -21,7 +22,7 @@ change.
 
 ## Next Up
 
-- [First unit to build]
+- Add the next feature unit from `context/feature-specs`.
 
 ## Open Questions
 
@@ -34,4 +35,11 @@ change.
 
 ## Session Notes
 
-- [Context needed to resume work in the next session]
+- Implemented RepairOrderPaymentDTO, RepairOrderPaymentService,
+  RepairOrderPaymentServiceImpl, repository lookup helpers, and focused
+  service tests.
+- Verified with `.\mvnw.cmd -Dtest=RepairOrderPaymentServiceTest test`
+  and `.\mvnw.cmd "-Dtest=RepairOrderPaymentServiceTest,RepairOrderItemServiceTest,RepairOrderServiceTest" test`.
+- Full `.\mvnw.cmd test` currently fails before repository tests complete
+  because the MySQL connection is unavailable (`Communications link
+  failure`).
