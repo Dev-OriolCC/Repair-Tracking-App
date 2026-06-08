@@ -76,6 +76,7 @@ public class InstallmentEntity {
     public enum InstallmentStatus {
         ACTIVE,
         COMPLETED,
-        DEFAULTED
+        DEFAULTED,
+        DELETED
     }
 }

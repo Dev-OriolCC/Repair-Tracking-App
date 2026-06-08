@@ -224,10 +224,11 @@ CREATE TABLE installments (
   pending_amount DECIMAL(10,2)    NOT NULL DEFAULT 0.00
                                   COMMENT 'total_amount − amount_paid',
   status         ENUM(
-                   'active',
-                   'completed',
-                   'defaulted'
-                 )                NOT NULL DEFAULT 'active',
+                 'ACTIVE',
+                 'COMPLETED',
+                 'DEFAULTED',
+                 'DELETED'
+                 )                NOT NULL DEFAULT 'ACTIVE',
   created_at     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP
                                   ON UPDATE CURRENT_TIMESTAMP,
@@ -306,7 +307,7 @@ BEGIN
   SET
     amount_paid    = amount_paid + NEW.amount,
     pending_amount = total_amount - (amount_paid + NEW.amount),
-    status         = IF((total_amount - (amount_paid + NEW.amount)) <= 0, 'completed', status)
+    status         = IF((total_amount - (amount_paid + NEW.amount)) <= 0, 'COMPLETED', status)
   WHERE id = NEW.installment_id;
 END$$
 

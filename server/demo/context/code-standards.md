@@ -166,10 +166,11 @@ Current entity groups:
 ## Domain Business Rules
 
 - Repair Orders use statuses: `PENDING`, `IN_PROGRESS`, `READY`, `COMPLETED`.
-- Installments use statuses: `ACTIVE`, `COMPLETED`, `DEFAULTED`.
+- Installments use statuses: `ACTIVE`, `COMPLETED`, `DEFAULTED`, `DELETED`.
 - Payment methods are `CASH`, `TRANSFER`, and `CARD`.
 - Service categories are `REEL_REPAIR`, `ROD_REPAIR`, `MAINTENANCE`, and `OTHER`.
 - Repair Orders and Installments must use soft delete for user-facing delete actions.
+- Installment soft delete is represented by status `DELETED`; default list and lookup workflows should exclude deleted installments unless deletion history is explicitly requested.
 - Payment records are append-only business history unless a deliberate correction workflow is designed.
 - Repair Order item unit prices must preserve the price at order time and must not change when the service catalog price changes later.
 - Parent financial fields such as total, amount paid, total amount, and pending amount must stay synchronized with item and payment records.

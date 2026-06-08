@@ -9,12 +9,13 @@ change.
 
 ## Current Goal
 
-- RepairOrderPayment service layer implemented.
+- Role controller endpoints implemented.
 
 ## Completed
 
-- Completed Data/Service layer for Client, RepairOrderItem, RepairOrder,
-  RepairOrderPayment, Role, Service, User
+- Completed Data/Service layer for Client, Installment,
+  InstallmentPayment, RepairOrderItem, RepairOrder, RepairOrderPayment,
+  Role, Service, User
 
 ## In Progress
 
@@ -35,6 +36,30 @@ change.
 
 ## Session Notes
 
+- Implemented RoleController endpoints for list, id lookup, name lookup,
+  name existence, create, update, and delete using RoleService methods.
+- Added Swagger/OpenAPI annotations and RoleController-scoped domain
+  exception mapping for invalid requests, not found, duplicates, and
+  resource-in-use conflicts.
+- Verified with `.\mvnw.cmd -DskipTests compile`.
+- Full `.\mvnw.cmd test` still fails before repository tests complete
+  because MySQL credentials are unavailable (`Access denied for user
+  '${DB_USERNAME}'...`).
+- Started RoleController implementation from feature spec 03.
+- Implemented InstallmentDTO, InstallmentService,
+  InstallmentServiceImpl, InstallmentPaymentDTO,
+  InstallmentPaymentService, InstallmentPaymentServiceImpl,
+  repository lookup helpers, `DELETED` installment status soft delete,
+  SQL enum updates, context documentation updates, and focused service
+  tests.
+- Verified with `.\mvnw.cmd -Dtest=InstallmentServiceTest test`,
+  `.\mvnw.cmd -Dtest=InstallmentPaymentServiceTest test`, and
+  `.\mvnw.cmd "-Dtest=InstallmentServiceTest,InstallmentPaymentServiceTest,ClientServiceTest,UserServiceTest" test`.
+- Full `.\mvnw.cmd test` still fails before repository tests complete
+  because the MySQL connection is unavailable (`Communications link
+  failure`).
+- Started Installment and InstallmentPayment service-layer implementation
+  from feature spec 02.
 - Implemented RepairOrderPaymentDTO, RepairOrderPaymentService,
   RepairOrderPaymentServiceImpl, repository lookup helpers, and focused
   service tests.

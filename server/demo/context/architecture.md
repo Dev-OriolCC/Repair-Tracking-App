@@ -101,11 +101,11 @@ The schema uses foreign keys and indexes to protect relationships and support lo
 ### Installments
 
 - `InstallmentEntity` is the parent layaway or credit plan record.
-- Status values are `ACTIVE`, `COMPLETED`, and `DEFAULTED`.
+- Status values are `ACTIVE`, `COMPLETED`, `DEFAULTED`, and `DELETED`.
 - Each Installment belongs to one client and one creator user.
 - Each Installment can have many `InstallmentPaymentEntity` records.
 - Payment methods are `CASH`, `TRANSFER`, and `CARD`.
-- Installments must use soft delete in the target architecture so financial history and reporting remain intact.
+- Installments use status `DELETED` for soft delete so financial history and reporting remain intact.
 
 ## API Boundary
 

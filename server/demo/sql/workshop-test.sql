@@ -224,9 +224,10 @@ CREATE TABLE installments (
   pending_amount DECIMAL(10,2)    NOT NULL DEFAULT 0.00
                                   COMMENT 'total_amount − amount_paid',
   status         ENUM(
-                   'ACTIVE',
-                   'COMPLETED',
-                   'DEFAULTED'
+                 'ACTIVE',
+                 'COMPLETED',
+                 'DEFAULTED',
+                 'DELETED'
                  )                NOT NULL DEFAULT 'ACTIVE',
   created_at     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at     TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP

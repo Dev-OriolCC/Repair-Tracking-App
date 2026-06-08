@@ -64,7 +64,7 @@ The target system uses a Java/Spring Boot backend with MySQL persistence. Repair
 - Create and manage Installments linked to a client and creating user.
 - Track the article or item being financed.
 - Store interest rate, total amount, amount paid, pending amount, comments, created date, and updated date.
-- Track installment status using Active, Completed, and Defaulted.
+- Track installment status using Active, Completed, Defaulted, and Deleted for soft-deleted history.
 - Support view, edit, history, and soft delete actions.
 
 ### Installment Payment Tracking
@@ -146,7 +146,7 @@ The backend is organized around a standard Spring Boot layered architecture:
 - Each Installment belongs to a client and a creating user.
 - Each Installment can have many `installment_payments`.
 - Financial summary fields include total amount, amount paid, and pending amount.
-- Status tracks whether the plan is active, completed, or defaulted.
+- Status tracks whether the plan is active, completed, defaulted, or soft-deleted.
 
 ## Scope
 
