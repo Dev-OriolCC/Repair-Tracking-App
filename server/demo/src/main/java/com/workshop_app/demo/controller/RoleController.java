@@ -2,16 +2,11 @@ package com.workshop_app.demo.controller;
 
 import com.workshop_app.demo.service.RoleService;
 import com.workshop_app.demo.service.dto.RoleDTO;
-import com.workshop_app.demo.service.exception.DuplicateResourceException;
-import com.workshop_app.demo.service.exception.InvalidRequestException;
-import com.workshop_app.demo.service.exception.ResourceInUseException;
-import com.workshop_app.demo.service.exception.ResourceNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +19,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/role")
@@ -81,24 +75,5 @@ public class RoleController {
     public ResponseEntity<Void> deleteById(@Parameter(description = "Role id") @PathVariable Long id) {
         roleService.deleteById(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @ExceptionHandler(InvalidRequestException.class)
-    public ResponseEntity<Map<String, String>> handleInvalidRequest(InvalidRequestException exception) {
-        return error(HttpStatus.BAD_REQUEST, exception);
-    }
-
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleResourceNotFound(ResourceNotFoundException exception) {
-        return error(HttpStatus.NOT_FOUND, exception);
-    }
-
-    @ExceptionHandler({DuplicateResourceException.class, ResourceInUseException.class})
-    public ResponseEntity<Map<String, String>> handleConflict(RuntimeException exception) {
-        return error(HttpStatus.CONFLICT, exception);
-    }
-
-    private ResponseEntity<Map<String, String>> error(HttpStatus status, RuntimeException exception) {
-        return ResponseEntity.status(status).body(Map.of("message", exception.getMessage()));
     }
 }

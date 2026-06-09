@@ -9,7 +9,8 @@ change.
 
 ## Current Goal
 
-- Role controller endpoints implemented.
+- User, Client, and Service controller endpoints plus global exception
+  handling implemented.
 
 ## Completed
 
@@ -36,6 +37,20 @@ change.
 
 ## Session Notes
 
+- Implemented UserController, ClientController, and ServiceController
+  endpoints using their existing service methods.
+- Added ErrorResponseDTO and GlobalExceptionHandler with
+  generalExceptionHandler, forbiddenException, and ioException methods.
+- Removed RoleController-scoped exception handlers so RoleController uses
+  the global handler too.
+- Added Swagger/OpenAPI annotations for User, Client, and Service
+  controllers.
+- Verified with `.\mvnw.cmd -DskipTests compile`.
+- Full `.\mvnw.cmd test` still fails before repository tests complete
+  because MySQL credentials are unavailable (`Access denied for user
+  '${DB_USERNAME}'...`).
+- Started User, Client, and Service controller implementation from
+  feature spec 04.
 - Implemented RoleController endpoints for list, id lookup, name lookup,
   name existence, create, update, and delete using RoleService methods.
 - Added Swagger/OpenAPI annotations and RoleController-scoped domain
