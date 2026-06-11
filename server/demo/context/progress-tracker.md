@@ -9,8 +9,8 @@ change.
 
 ## Current Goal
 
-- User, Client, and Service controller endpoints plus global exception
-  handling implemented.
+- RepairOrder, RepairOrderItem, and RepairOrderPayment controller
+  endpoints implemented.
 
 ## Completed
 
@@ -37,6 +37,16 @@ change.
 
 ## Session Notes
 
+- Implemented RepairOrderController, RepairOrderItemController, and
+  RepairOrderPaymentController endpoints using their existing service
+  methods.
+- Added Swagger/OpenAPI annotations for all three repair controller
+  groups.
+- Verified with `.\mvnw.cmd -DskipTests compile`.
+- Full `.\mvnw.cmd test` still fails before repository tests complete
+  because MySQL credentials are unavailable (`Access denied for user
+  '${DB_USERNAME}'...`).
+- Started repair controller implementation from feature spec 05.
 - Implemented UserController, ClientController, and ServiceController
   endpoints using their existing service methods.
 - Added ErrorResponseDTO and GlobalExceptionHandler with
